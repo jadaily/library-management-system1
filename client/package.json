@@ -26,9 +26,7 @@
     "three": "^0.175.0"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "start:dev": "set HOST=localhost&& react-scripts start",
-    "start:mac": "HOST=localhost react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
