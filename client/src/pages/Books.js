@@ -354,25 +354,24 @@ const Books = () => {
   
   // Fetch books and genres on component mount
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [booksRes, genresRes] = await Promise.all([
-          getBooks(),
-          getGenres()
-        ]);
-        
-        setBooks(booksRes.data.data);
-        setGenres(genresRes.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setError('Failed to load books. Please try again later.');
-        setLoading(false);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/books');
+      
+      // Add this debug line:
+      console.log('API Response Structure:', response.data);
+      
+      // Handle both possible response structures:
+      const booksData = response.data.data || response.data;
+      setBooks(Array.isArray(booksData) ? booksData : []);
+    } catch (error) {
+      console.error('API Error:', error);
+      setBooks([]); // Ensure books is always an array
+    }
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
+}, []);
 
   // Handle filter changes
   const handleSearch = async (e) => {
