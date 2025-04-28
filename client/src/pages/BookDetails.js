@@ -200,7 +200,7 @@ const BookDetails = () => {
               
               <div className="book-rating mb-3">
                 <FaStar className="rating-icon me-1" /> 
-                <span className="rating-value me-2">{book.averageRating ? book.averageRating.toFixed(1) : 'No ratings'}</span>
+                <span className="rating-value me-2">{book.averageRating ? Number(book.averageRating).toFixed(1) : 'No ratings'}</span>
                 <span className="rating-count">({book.numberOfReviews || 0} reviews)</span>
               </div>
               
