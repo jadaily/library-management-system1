@@ -361,7 +361,7 @@ const Books = () => {
           getGenres()
         ]);
         
-        setBooks(booksRes.data);
+        setBooks(booksRes.data.data);
         setGenres(genresRes.data);
         setLoading(false);
       } catch (error) {
